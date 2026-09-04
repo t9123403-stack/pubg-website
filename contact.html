@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us - PUBG ZONE</title>
+    <meta name="description" content="Contact PUBG ZONE for gaming support, suggestions, feedback and problem reports.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        header {
+            padding: 22px 5%;
+            border-bottom: 2px solid #ffb000;
+            background: #050505;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffb000;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffb000;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 55px auto;
+            padding: 0 25px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title h1 {
+            font-size: 48px;
+            color: #ffb000;
+            margin-bottom: 15px;
+        }
+
+        .title p {
+            color: #cccccc;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .info-box h2 {
+            color: #ffb000;
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .main-box {
+            background: #111111;
+            border: 1px solid #292929;
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .main-box h2 {
+            color: #ffb000;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .main-box .subtitle {
+            color: #bbbbbb;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            color: #ffb000;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            background: #080808;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #ffb000;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        textarea {
+            height: 160px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            background: #ffb000;
+            color: #111111;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ffc43d;
+        }
+
+        .note {
+            margin-top: 25px;
+            padding: 18px;
+            background: #0c0c0c;
+            border-left: 4px solid #ffb000;
+            color: #cccccc;
+            line-height: 1.6;
+            border-radius: 5px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back a {
+            display: inline-block;
+            color: #ffb000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #292929;
+            color: #888888;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 15px;
+            }
+
+            .container {
+                margin: 40px auto;
+            }
+
+            .title h1 {
+                font-size: 38px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .main-box {
+                padding: 22px;
+            }
+
+            .main-box h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">PUBG <span>ZONE</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="weapons.html">Guides</a>
+        <a href="gaming-tips.html">Tips</a>
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="title">
+        <h1>CONTACT US</h1>
+
+        <p>
+            Have a question, suggestion or problem?
+            Get in touch with PUBG ZONE.
+        </p>
+    </div>
+
+
+    <div class="contact-info">
+
+        <div class="info-box">
+            <div class="icon">📧</div>
+            <h2>Email Support</h2>
+            <p>
+                Email support will be available soon.
+            </p>
+        </div>
+
+
+        <div class="info-box">
+            <div class="icon">📱</div>
+            <h2>WhatsApp</h2>
+            <p>
+                WhatsApp support will be available soon.
+            </p>
+        </div>
+
+
+        <div class="info-box">
+            <div class="icon">🎮</div>
+            <h2>Gaming Support</h2>
+            <p>
+                Send us your gaming questions and suggestions.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="main-box">
+
+        <h2>Send Us a Message</h2>
+
+        <p class="subtitle">
+            Use the form below to send your feedback,
+            suggestions or report a problem.
+        </p>
+
+
+        <form onsubmit="sendMessage(event)">
+
+            <label>Your Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <label>Your Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label>Reason for Contact</label>
+
+            <select id="reason" required>
+
+                <option value="">Select an option</option>
+
+                <option value="Gaming Support">
+                    Gaming Support
+                </option>
+
+                <option value="Suggestion">
+                    Suggestion
+                </option>
+
+                <option value="Report Problem">
+                    Report a Problem
+                </option>
+
+                <option value="Website Feedback">
+                    Website Feedback
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label>Your Message</label>
+
+            <textarea
+                id="message"
+                placeholder="Write your message here..."
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                SEND MESSAGE
+            </button>
+
+        </form>
+
+
+        <div class="note">
+            <strong>Important:</strong>
+            Please do not send passwords, payment information
+            or other private information through this form.
+        </div>
+
+    </div>
+
+
+    <div class="back">
+        <a href="index.html">← BACK TO HOME</a>
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 PUBG ZONE. All rights reserved.
+</footer>
+
+
+<script>
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+
+    const reason = document.getElementById("reason").value;
+
+    alert(
+        "Thank you " +
+        name +
+        "! Your " +
+        reason +
+        " request has been received."
+    );
+
+    document.querySelector("form").reset();
+}
+
+</script>
+
+</body>
+</html>

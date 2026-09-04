@@ -1,0 +1,757 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PUBG Zone - Gaming Hub</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 7%;
+
+            background: rgba(5, 5, 5, 0.92);
+            border-bottom: 1px solid rgba(255, 184, 0, 0.35);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ffb800;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffb800;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 120px 20px 70px;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.82)),
+                url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .small-title {
+            color: #ffb800;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+
+            text-shadow: 0 5px 25px black;
+        }
+
+        .hero h1 span {
+            color: #ffb800;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #dddddd;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+        }
+
+        .main-btn {
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            background: #ffb800;
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 16px;
+            font-weight: 900;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+
+            box-shadow: 0 8px 25px rgba(255,184,0,0.25);
+        }
+
+        .main-btn:hover {
+            transform: translateY(-4px);
+            background: #ffc933;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #ffb800;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            margin-top: 10px;
+            font-size: 38px;
+        }
+
+        .section-title p {
+            margin-top: 12px;
+            color: #999;
+        }
+
+        /* ================= TOOLS ================= */
+
+        .tools {
+            background: #0d0d0d;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 22px;
+
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            position: relative;
+
+            background: linear-gradient(145deg, #191919, #101010);
+
+            padding: 32px 25px;
+
+            border: 1px solid #292929;
+            border-radius: 12px;
+
+            text-align: center;
+
+            transition: 0.35s;
+
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background: #ffb800;
+
+            transform: scaleX(0);
+            transition: 0.35s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #ffb800;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .icon {
+            width: 65px;
+            height: 65px;
+
+            margin: auto auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #242424;
+
+            font-size: 30px;
+        }
+
+        .card h3 {
+            color: #ffb800;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .card-button {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 9px 18px;
+
+            color: white;
+            border: 1px solid #444;
+
+            border-radius: 5px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .card-button:hover {
+            background: #ffb800;
+            color: #111;
+            border-color: #ffb800;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background:
+                linear-gradient(rgba(10,10,10,0.94), rgba(10,10,10,0.94)),
+                url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+        }
+
+        .about-box {
+            max-width: 900px;
+            margin: auto;
+
+            text-align: center;
+
+            padding: 45px 30px;
+
+            background: rgba(20,20,20,0.85);
+
+            border: 1px solid #292929;
+            border-radius: 12px;
+        }
+
+        .about-box h2 {
+            color: #ffb800;
+            margin-bottom: 18px;
+            font-size: 32px;
+        }
+
+        .about-box p {
+            color: #bbb;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* ================= UPDATES ================= */
+
+        .updates {
+            background: #080808;
+        }
+
+        .update-list {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            gap: 15px;
+        }
+
+        .update {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 22px;
+
+            background: #151515;
+
+            border-left: 3px solid #ffb800;
+
+            border-radius: 6px;
+        }
+
+        .update h3 {
+            font-size: 17px;
+        }
+
+        .update p {
+            margin-top: 6px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .update span {
+            color: #ffb800;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background: #050505;
+
+            border-top: 1px solid #222;
+        }
+
+        footer .footer-logo {
+            color: #ffb800;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        footer p {
+            color: #777;
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #555;
+            font-size: 12px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .update {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            PUBG <span>ZONE</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#tools">Tools</a>
+            <a href="#guides">Guides</a>
+            <a href="#updates">Updates</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                THE GAMING COMMUNITY HUB
+            </div>
+
+            <h1>
+                WELCOME TO <span>PUBG ZONE</span>
+            </h1>
+
+            <p>
+                Gaming tools, useful guides, tips, settings and
+                gaming resources — all in one place.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#tools" class="main-btn">
+                    EXPLORE TOOLS
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOOLS ================= -->
+
+    <section class="tools" id="tools">
+
+        <div class="section-title">
+
+            <small>WHAT WE OFFER</small>
+
+            <h2>Gaming Tools</h2>
+
+            <p>
+                Useful tools for gamers are coming here.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">🖼️</div>
+
+                <h3>Image Resize</h3>
+
+                <p>
+                    Resize your gaming images quickly
+                    and easily.
+                </p>
+
+                <a href="resize.html" class="card-button">
+                    OPEN TOOL
+                </a>
+
+            </div>
+
+            <div class="card">
+
+    <div class="icon">🗜️</div>
+
+    <h3>Image Compressor</h3>
+
+    <p>
+        Compress your gaming images and reduce
+        file size easily.
+    </p>
+
+    <a href="compress.html" class="card-button">
+        OPEN TOOL
+    </a>
+
+           </div>
+
+          <div class="card">
+
+    <div class="icon">🔄</div>
+
+    <h3>Image Converter</h3>
+
+    <p>
+        Convert your images between JPG and PNG
+        quickly and easily.
+    </p>
+
+    <a href="converter.html" class="card-button">
+        OPEN TOOL
+    </a>
+
+            </div>
+
+            <div class="card">
+
+                <div class="icon">🎯</div>
+
+                <h3>Sensitivity</h3>
+
+                <p>
+                    Explore useful sensitivity settings
+                    and guides.
+                </p>
+
+                <a href="sensitivity.html" class="card-button">
+
+                    VIEW SETTINGS
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🔫</div>
+
+                <h3>Weapons Guide</h3>
+
+                <p>
+                    Learn about weapons, attachments
+                    and gameplay tips.
+                </p>
+
+             <a href="weapons.html" class="card-button">
+                    VIEW GUIDE
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🎮</div>
+
+                <h3>Gaming Tips</h3>
+
+                <p>
+                    Improve your gameplay with useful
+                    gaming tips.
+                </p>
+
+                <a href="gaming-tips.html" class="card-button">
+
+                    READ TIPS
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GUIDES ================= -->
+
+    <section class="about" id="guides">
+
+        <div class="about-box">
+
+            <h2>PUBG Gaming Guides</h2>
+
+            <p>
+                PUBG Zone is being created as a gaming
+                resource website for players who want
+                useful tools, guides, settings and gaming
+                information in one place.
+            </p>
+
+            <br>
+
+            <p>
+                More tools and features will be added
+                step by step.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= UPDATES ================= -->
+
+    <section class="updates" id="updates">
+
+        <div class="section-title">
+
+            <small>LATEST</small>
+
+            <h2>Gaming Updates</h2>
+
+            <p>
+                Latest gaming content will appear here.
+            </p>
+
+        </div>
+
+
+        <div class="update-list">
+
+            <div class="update">
+
+                <div>
+                    <h3>New Gaming Tools Coming Soon</h3>
+                    <p>
+                        We are building useful tools for gamers.
+                    </p>
+                </div>
+
+                <span>NEW</span>
+
+            </div>
+
+
+            <div class="update">
+
+                <div>
+                    <h3>PUBG Tips & Guides</h3>
+                    <p>
+                        Helpful gameplay guides will be added.
+                    </p>
+                </div>
+
+                <span>GUIDE</span>
+
+            </div>
+
+
+            <div class="update">
+
+                <div>
+                    <h3>More Features Coming</h3>
+                    <p>
+                        Stay tuned for new gaming features.
+                    </p>
+                </div>
+
+                <span>SOON</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            PUBG ZONE
+        </div>
+
+        <p>
+            An independent gaming fan website.
+            Not affiliated with or endorsed by PUBG or
+            its respective owners.
+        </p>
+
+        <div class="copyright">
+            © 2026 PUBG Zone. All rights reserved.
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
+```

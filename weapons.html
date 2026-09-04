@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PUBG Zone - Weapons Guide</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    padding:18px 7%;
+    background:#111;
+    border-bottom:1px solid #333;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    color:#ffb800;
+}
+
+.logo span{
+    color:white;
+}
+
+.home-btn{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.home-btn:hover{
+    color:#ffb800;
+}
+
+
+/* MAIN */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:50px auto;
+}
+
+
+/* TITLE */
+
+.title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.title small{
+    display:block;
+    color:#ffb800;
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:4px;
+    margin-bottom:12px;
+}
+
+.title h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.title p{
+    color:#999;
+}
+
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.filter-btn{
+    padding:11px 20px;
+
+    background:#151515;
+
+    border:1px solid #333;
+
+    color:#ccc;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#ffb800;
+    color:#111;
+    border-color:#ffb800;
+}
+
+
+/* WEAPONS GRID */
+
+.weapons-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+/* CARD */
+
+.weapon-card{
+    background:#151515;
+
+    border:1px solid #292929;
+
+    border-radius:12px;
+
+    padding:22px;
+
+    transition:0.3s;
+}
+
+.weapon-card:hover{
+    transform:translateY(-4px);
+
+    border-color:#ffb800;
+}
+
+
+/* ICON */
+
+.weapon-icon{
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    background:#222;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+}
+
+
+/* NAME */
+
+.weapon-card h2{
+    color:#ffb800;
+
+    font-size:22px;
+
+    margin-bottom:6px;
+}
+
+.category{
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+}
+
+
+/* STATS */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:18px;
+}
+
+.stat{
+    background:#0e0e0e;
+
+    padding:10px;
+
+    border-radius:5px;
+}
+
+.stat small{
+    display:block;
+
+    color:#666;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.stat strong{
+    color:white;
+}
+
+
+/* DESCRIPTION */
+
+.description{
+    color:#999;
+
+    line-height:1.5;
+
+    font-size:14px;
+
+    padding-top:15px;
+
+    border-top:1px solid #292929;
+}
+
+
+/* TIP */
+
+.tip{
+    margin-top:12px;
+
+    color:#ffb800;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+
+/* EMPTY */
+
+.no-result{
+    display:none;
+
+    text-align:center;
+
+    color:#777;
+
+    padding:40px;
+}
+
+
+/* INFO */
+
+.info{
+    margin-top:30px;
+
+    padding:18px;
+
+    background:#101010;
+
+    border:1px solid #292929;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    color:#666;
+
+    padding:30px 20px;
+
+    border-top:1px solid #222;
+
+    margin-top:50px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .weapons-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:550px){
+
+    header{
+        padding:15px 5%;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .title h1{
+        font-size:30px;
+    }
+
+    .weapons-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        PUBG <span>ZONE</span>
+    </div>
+
+    <a
+        href="index.html"
+        class="home-btn"
+    >
+        ← Back Home
+    </a>
+
+</header>
+
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <small>PUBG ZONE GUIDE</small>
+
+        <h1>🔫 Weapons Guide</h1>
+
+        <p>
+            Explore weapon stats, categories and useful gameplay tips.
+        </p>
+
+    </div>
+
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button
+            class="filter-btn active"
+            onclick="filterWeapons('all',this)"
+        >
+            All
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="filterWeapons('ar',this)"
+        >
+            Assault Rifles
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="filterWeapons('smg',this)"
+        >
+            SMGs
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="filterWeapons('sniper',this)"
+        >
+            Snipers
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="filterWeapons('shotgun',this)"
+        >
+            Shotguns
+        </button>
+
+    </div>
+
+
+
+    <!-- WEAPONS -->
+
+    <div
+        class="weapons-grid"
+        id="weaponsGrid"
+    >
+
+
+        <!-- M416 -->
+
+        <div
+            class="weapon-card"
+            data-category="ar"
+        >
+
+            <div class="weapon-icon">
+                🔫
+            </div>
+
+            <h2>M416</h2>
+
+            <div class="category">
+                Assault Rifle • 5.56mm
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>41</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Medium</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Easy</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A balanced assault rifle that is
+                useful for close and medium range fights.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Great all-round choice.
+            </div>
+
+        </div>
+
+
+
+        <!-- AKM -->
+
+        <div
+            class="weapon-card"
+            data-category="ar"
+        >
+
+            <div class="weapon-icon">
+                🔥
+            </div>
+
+            <h2>AKM</h2>
+
+            <div class="category">
+                Assault Rifle • 7.62mm
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>47</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Medium</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Hard</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A powerful rifle with strong damage
+                but more challenging recoil control.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Practice recoil control.
+            </div>
+
+        </div>
+
+
+
+        <!-- SCAR-L -->
+
+        <div
+            class="weapon-card"
+            data-category="ar"
+        >
+
+            <div class="weapon-icon">
+                🎯
+            </div>
+
+            <h2>SCAR-L</h2>
+
+            <div class="category">
+                Assault Rifle • 5.56mm
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>41</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Medium</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Easy</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A beginner-friendly rifle with
+                manageable recoil.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Good for learning sprays.
+            </div>
+
+        </div>
+
+
+
+        <!-- UMP45 -->
+
+        <div
+            class="weapon-card"
+            data-category="smg"
+        >
+
+            <div class="weapon-icon">
+                ⚡
+            </div>
+
+            <h2>UMP45</h2>
+
+            <div class="category">
+                SMG • .45 ACP
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>41</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Short</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Easy</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A stable SMG that works well
+                during aggressive close-range fights.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Strong for rushing.
+            </div>
+
+        </div>
+
+
+
+        <!-- VECTOR -->
+
+        <div
+            class="weapon-card"
+            data-category="smg"
+        >
+
+            <div class="weapon-icon">
+                💨
+            </div>
+
+            <h2>Vector</h2>
+
+            <div class="category">
+                SMG • 9mm
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>31</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Short</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>Very High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Medium</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                Very fast firing SMG designed
+                for close-range combat.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Use with a larger magazine.
+            </div>
+
+        </div>
+
+
+
+        <!-- KAR98K -->
+
+        <div
+            class="weapon-card"
+            data-category="sniper"
+        >
+
+            <div class="weapon-icon">
+                🎯
+            </div>
+
+            <h2>Kar98k</h2>
+
+            <div class="category">
+                Sniper • 7.62mm
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Long</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>Low</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Easy</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A classic bolt-action sniper
+                for accurate long-range shots.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Aim carefully before firing.
+            </div>
+
+        </div>
+
+
+
+        <!-- AWM -->
+
+        <div
+            class="weapon-card"
+            data-category="sniper"
+        >
+
+            <div class="weapon-icon">
+                💥
+            </div>
+
+            <h2>AWM</h2>
+
+            <div class="category">
+                Sniper • .300 Magnum
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>Very High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Very Long</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>Low</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Easy</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A high-powered sniper rifle
+                designed for long-range engagements.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Save it for important shots.
+            </div>
+
+        </div>
+
+
+
+        <!-- S686 -->
+
+        <div
+            class="weapon-card"
+            data-category="shotgun"
+        >
+
+            <div class="weapon-icon">
+                💣
+            </div>
+
+            <h2>S686</h2>
+
+            <div class="category">
+                Shotgun • 12 Gauge
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Damage</small>
+                    <strong>Very High</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Range</small>
+                    <strong>Very Short</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Fire Rate</small>
+                    <strong>Fast</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Control</small>
+                    <strong>Medium</strong>
+                </div>
+
+            </div>
+
+            <div class="description">
+                A powerful close-range shotgun
+                with two quick shots.
+            </div>
+
+            <div class="tip">
+                💡 Tip: Keep fights close.
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- INFO -->
+
+    <div class="info">
+
+        ⚠️ Weapon performance can vary with
+        game updates, attachments and player skill.
+        Use this guide as a general reference.
+
+    </div>
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 PUBG Zone — Gaming Tools
+
+</footer>
+
+
+
+<script>
+
+function filterWeapons(category,button){
+
+    const cards =
+        document.querySelectorAll(
+            ".weapon-card"
+        );
+
+    const buttons =
+        document.querySelectorAll(
+            ".filter-btn"
+        );
+
+
+    buttons.forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    cards.forEach(function(card){
+
+        if(
+            category === "all" ||
+            card.dataset.category === category
+        ){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>

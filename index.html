@@ -472,8 +472,10 @@
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
             <a href="privacy.html">Privacy</a>
-            <a href="login.html">Login</a>
-            <a href="signup.html">Sign Up</a>
+          <a href="login.html" id="loginLink">Login</a>
+<a href="signup.html" id="signupLink">Sign Up</a>
+<a href="account.html" id="accountLink" style="display:none;">My Account</a>
+<a href="#" id="logoutLink" style="display:none;">Logout</a>
             <a href="disclaimer.html">Disclaimer</a>
             <a href="#tools">Tools</a>
             <a href="#guides">Guides</a>
@@ -756,7 +758,91 @@
         </div>
 
     </footer>
+    
+<script type="module">
 
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyDjXbNWPISsBzkqmyoMEFJ0KFsnkwyltHE",
+
+    authDomain: "pubg-zone-9628a.firebaseapp.com",
+
+    projectId: "pubg-zone-9628a",
+
+    storageBucket: "pubg-zone-9628a.firebasestorage.app",
+
+    messagingSenderId: "144771852887",
+
+    appId: "1:144771852887:web:b59fd929271822088b9112",
+
+    measurementId: "G-KXMDN1EL1F"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+const loginLink = document.getElementById("loginLink");
+const signupLink = document.getElementById("signupLink");
+const accountLink = document.getElementById("accountLink");
+const logoutLink = document.getElementById("logoutLink");
+
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+        loginLink.style.display = "none";
+        signupLink.style.display = "none";
+
+        accountLink.style.display = "inline";
+        logoutLink.style.display = "inline";
+
+    } else {
+
+        loginLink.style.display = "inline";
+        signupLink.style.display = "inline";
+
+        accountLink.style.display = "none";
+        logoutLink.style.display = "none";
+
+    }
+
+});
+
+
+logoutLink.addEventListener("click", async (event) => {
+
+    event.preventDefault();
+
+    try {
+
+        await signOut(auth);
+
+        alert("Logout successful!");
+
+    } catch (error) {
+
+        alert("Logout failed: " + error.message);
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>

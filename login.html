@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - PUBG ZONE</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#0b0f14;
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.login-box{
+width:100%;
+max-width:430px;
+background:#121821;
+border:1px solid #28313d;
+border-radius:14px;
+padding:35px 30px;
+box-shadow:0 0 30px rgba(0,0,0,.5);
+}
+
+.logo{
+text-align:center;
+font-size:30px;
+font-weight:bold;
+color:#f5c400;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+color:#9aa4b2;
+margin-bottom:30px;
+font-size:14px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+font-size:24px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+color:#d9dee5;
+font-size:14px;
+}
+
+input{
+width:100%;
+padding:13px;
+margin-bottom:18px;
+border:1px solid #303a47;
+border-radius:8px;
+background:#0d131b;
+color:white;
+outline:none;
+font-size:15px;
+}
+
+input:focus{
+border-color:#f5c400;
+}
+
+.password-option{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:-8px;
+margin-bottom:20px;
+color:#9aa4b2;
+font-size:13px;
+}
+
+.password-option input{
+width:auto;
+margin:0;
+}
+
+.forgot{
+display:block;
+text-align:right;
+color:#f5c400;
+font-size:13px;
+text-decoration:none;
+margin-top:-10px;
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:0;
+border-radius:8px;
+background:#f5c400;
+color:#111;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#ffd52a;
+}
+
+.signup-text{
+text-align:center;
+margin-top:22px;
+color:#9aa4b2;
+font-size:14px;
+}
+
+.signup-text a{
+color:#f5c400;
+text-decoration:none;
+font-weight:bold;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:20px;
+color:#9aa4b2;
+text-decoration:none;
+font-size:14px;
+}
+
+.footer{
+text-align:center;
+margin-top:25px;
+color:#66717f;
+font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+<div class="logo">PUBG ZONE</div>
+
+<div class="subtitle">
+Gaming Tools • Guides • Tips
+</div>
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+<label>Email Address</label>
+<input
+type="email"
+id="email"
+placeholder="Enter your email"
+required
+>
+
+<label>Password</label>
+<input
+type="password"
+id="password"
+placeholder="Enter your password"
+required
+>
+
+<div class="password-option">
+<input type="checkbox" id="showPassword">
+<span>Show Password</span>
+</div>
+
+<a href="#" class="forgot" id="forgotPassword">
+Forgot Password?
+</a>
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+<div class="signup-text">
+Don't have an account?
+<a href="signup.html">Create Account</a>
+</div>
+
+<a class="back" href="index.html">
+← Back to PUBG ZONE
+</a>
+
+<div class="footer">
+© 2026 PUBG ZONE. All rights reserved.
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword,
+sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDjXbNWPISsBzkqmyoMEFJ0KFsnkwyltHE",
+
+authDomain: "pubg-zone-9628a.firebaseapp.com",
+
+projectId: "pubg-zone-9628a",
+
+storageBucket: "pubg-zone-9628a.firebasestorage.app",
+
+messagingSenderId: "144771852887",
+
+appId: "1:144771852887:web:b59fd929271822088b9112",
+
+measurementId: "G-KXMDN1EL1F"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+document.getElementById("showPassword").addEventListener("change", function(){
+
+const password = document.getElementById("password");
+
+password.type = this.checked ? "text" : "password";
+
+});
+
+
+document.getElementById("loginForm").addEventListener("submit", async function(event){
+
+event.preventDefault();
+
+const email = document.getElementById("email").value.trim();
+
+const password = document.getElementById("password").value;
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+alert("Login successful!");
+
+window.location.href = "index.html";
+
+}catch(error){
+
+if(error.code === "auth/invalid-credential"){
+
+alert("Email or password is incorrect.");
+
+}
+else if(error.code === "auth/invalid-email"){
+
+alert("Please enter a valid email.");
+
+}
+else{
+
+alert("Login failed: " + error.message);
+
+}
+
+}
+
+});
+
+
+document.getElementById("forgotPassword").addEventListener("click", async function(event){
+
+event.preventDefault();
+
+const email = document.getElementById("email").value.trim();
+
+if(!email){
+
+alert("Please enter your email address first.");
+
+return;
+
+}
+
+try{
+
+await sendPasswordResetEmail(auth,email);
+
+alert("Password reset email sent. Check your inbox.");
+
+}catch(error){
+
+if(error.code === "auth/user-not-found"){
+
+alert("No account found with this email.");
+
+}
+else{
+
+alert("Could not send reset email.");
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

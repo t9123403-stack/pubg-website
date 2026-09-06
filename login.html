@@ -1,237 +1,514 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Login - PUBG ZONE</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
 
-body{
-font-family:Arial,sans-serif;
-background:#0b0f14;
-color:white;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.login-box{
-width:100%;
-max-width:430px;
-background:#121821;
-border:1px solid #28313d;
-border-radius:14px;
-padding:35px 30px;
-box-shadow:0 0 30px rgba(0,0,0,.5);
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#080808;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    width:100%;
+    padding:20px 7%;
+    background:#050505;
+    border-bottom:1px solid rgba(255,184,0,0.35);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-text-align:center;
-font-size:30px;
-font-weight:bold;
-color:#f5c400;
-margin-bottom:8px;
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:#ffb800;
 }
 
-.subtitle{
-text-align:center;
-color:#9aa4b2;
-margin-bottom:30px;
-font-size:14px;
+.logo span{
+    color:white;
 }
 
-h2{
-text-align:center;
-margin-bottom:25px;
-font-size:24px;
+.back-home{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
 }
 
-label{
-display:block;
-margin-bottom:8px;
-color:#d9dee5;
-font-size:14px;
+.back-home:hover{
+    color:#ffb800;
 }
 
-input{
-width:100%;
-padding:13px;
-margin-bottom:18px;
-border:1px solid #303a47;
-border-radius:8px;
-background:#0d131b;
-color:white;
-outline:none;
-font-size:15px;
+.login-section{
+    flex:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:60px 20px;
 }
 
-input:focus{
-border-color:#f5c400;
+.login-box{
+    width:100%;
+    max-width:450px;
+
+    background:#111;
+
+    border:1px solid #292929;
+    border-radius:15px;
+
+    padding:40px 35px;
+
+    box-shadow:
+        0 0 35px rgba(255,184,0,0.08);
 }
 
-.password-option{
-display:flex;
-align-items:center;
-gap:8px;
-margin-top:-8px;
-margin-bottom:20px;
-color:#9aa4b2;
-font-size:13px;
+.login-title{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.password-option input{
-width:auto;
-margin:0;
+.login-title small{
+    color:#ffb800;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.login-title h1{
+    font-size:35px;
+    margin-top:10px;
+}
+
+.login-title p{
+    color:#888;
+    font-size:14px;
+    margin-top:10px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+
+    color:#ddd;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.form-group input{
+    width:100%;
+
+    padding:14px;
+
+    background:#080808;
+
+    border:1px solid #333;
+    border-radius:7px;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+.form-group input:focus{
+    border-color:#ffb800;
+}
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+
+    font-size:13px;
+}
+
+.show-password{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:#aaa;
+}
+
+.show-password input{
+    width:auto;
 }
 
 .forgot{
-display:block;
-text-align:right;
-color:#f5c400;
-font-size:13px;
-text-decoration:none;
-margin-top:-10px;
-margin-bottom:20px;
+    color:#ffb800;
+    text-decoration:none;
+    cursor:pointer;
 }
 
-button{
-width:100%;
-padding:14px;
-border:0;
-border-radius:8px;
-background:#f5c400;
-color:#111;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+.forgot:hover{
+    text-decoration:underline;
 }
 
-button:hover{
-background:#ffd52a;
+.login-btn{
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+    border-radius:7px;
+
+    background:#ffb800;
+    color:#111;
+
+    font-size:16px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    background:#ffc933;
+    transform:translateY(-2px);
+}
+
+.login-btn:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.message{
+    display:none;
+
+    margin-bottom:20px;
+    padding:12px;
+
+    border-radius:7px;
+
+    text-align:center;
+
+    font-size:13px;
 }
 
 .signup-text{
-text-align:center;
-margin-top:22px;
-color:#9aa4b2;
-font-size:14px;
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#888;
+
+    font-size:14px;
 }
 
 .signup-text a{
-color:#f5c400;
-text-decoration:none;
-font-weight:bold;
+    color:#ffb800;
+    text-decoration:none;
+    font-weight:bold;
 }
 
-.back{
-display:block;
-text-align:center;
-margin-top:20px;
-color:#9aa4b2;
-text-decoration:none;
-font-size:14px;
+.signup-text a:hover{
+    text-decoration:underline;
 }
 
-.footer{
-text-align:center;
-margin-top:25px;
-color:#66717f;
-font-size:12px;
+.divider{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin:25px 0;
+
+    color:#555;
+
+    font-size:12px;
 }
+
+.divider::before,
+.divider::after{
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#292929;
+}
+
+.create-account{
+    display:block;
+
+    width:100%;
+
+    padding:13px;
+
+    text-align:center;
+
+    border:1px solid #444;
+
+    border-radius:7px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.create-account:hover{
+    border-color:#ffb800;
+    color:#ffb800;
+}
+
+footer{
+    text-align:center;
+
+    padding:25px 20px;
+
+    background:#050505;
+
+    border-top:1px solid #222;
+
+    color:#666;
+
+    font-size:12px;
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:17px 5%;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .back-home{
+        font-size:12px;
+    }
+
+    .login-box{
+        padding:30px 22px;
+    }
+
+    .login-title h1{
+        font-size:30px;
+    }
+
+    .options{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<div class="login-box">
 
-<div class="logo">PUBG ZONE</div>
+<header>
 
-<div class="subtitle">
-Gaming Tools • Guides • Tips
-</div>
+    <div class="logo">
+        PUBG <span>ZONE</span>
+    </div>
 
-<h2>Login</h2>
+    <a href="index.html" class="back-home">
+        ← Back to Home
+    </a>
 
-<form id="loginForm">
+</header>
 
-<label>Email Address</label>
-<input
-type="email"
-id="email"
-placeholder="Enter your email"
-required
->
 
-<label>Password</label>
-<input
-type="password"
-id="password"
-placeholder="Enter your password"
-required
->
+<section class="login-section">
 
-<div class="password-option">
-<input type="checkbox" id="showPassword">
-<span>Show Password</span>
-</div>
+    <div class="login-box">
 
-<a href="#" class="forgot" id="forgotPassword">
-Forgot Password?
-</a>
 
-<button type="submit">
-Login
-</button>
+        <div class="login-title">
 
-</form>
+            <small>WELCOME BACK</small>
 
-<div class="signup-text">
-Don't have an account?
-<a href="signup.html">Create Account</a>
-</div>
+            <h1>Login</h1>
 
-<a class="back" href="index.html">
-← Back to PUBG ZONE
-</a>
+            <p>
+                Login to your PUBG ZONE account
+            </p>
 
-<div class="footer">
-© 2026 PUBG ZONE. All rights reserved.
-</div>
+        </div>
 
-</div>
+
+        <div id="message" class="message"></div>
+
+
+        <form id="loginForm">
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="options">
+
+                <label class="show-password">
+
+                    <input
+                        type="checkbox"
+                        id="showPassword"
+                    >
+
+                    Show Password
+
+                </label>
+
+
+                <a
+                    href="#"
+                    class="forgot"
+                    id="forgotPassword"
+                >
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginBtn"
+            >
+                LOGIN
+            </button>
+
+
+        </form>
+
+
+        <div class="divider">
+            OR
+        </div>
+
+
+        <a
+            href="signup.html"
+            class="create-account"
+        >
+            CREATE NEW ACCOUNT
+        </a>
+
+
+        <div class="signup-text">
+
+            Don't have an account?
+
+            <a href="signup.html">
+                Sign Up
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 PUBG ZONE — Gaming Tools & Resources
+
+</footer>
+
 
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
-getAuth,
-signInWithEmailAndPassword,
-sendPasswordResetEmail
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyDjXbNWPISsBzkqmyoMEFJ0KFsnkwyltHE",
+    apiKey: "AIzaSyDjXbNWPISsBzkqmyoMEFJ0KFsnkwyltHE",
 
-authDomain: "pubg-zone-9628a.firebaseapp.com",
+    authDomain: "pubg-zone-9628a.firebaseapp.com",
 
-projectId: "pubg-zone-9628a",
+    projectId: "pubg-zone-9628a",
 
-storageBucket: "pubg-zone-9628a.firebasestorage.app",
+    storageBucket: "pubg-zone-9628a.firebasestorage.app",
 
-messagingSenderId: "144771852887",
+    messagingSenderId: "144771852887",
 
-appId: "1:144771852887:web:b59fd929271822088b9112",
+    appId: "1:144771852887:web:b59fd929271822088b9112",
 
-measurementId: "G-KXMDN1EL1F"
+    measurementId: "G-KXMDN1EL1F"
 
 };
 
@@ -241,99 +518,195 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 
-document.getElementById("showPassword").addEventListener("change", function(){
+const loginForm =
+    document.getElementById("loginForm");
 
-const password = document.getElementById("password");
+const emailInput =
+    document.getElementById("email");
 
-password.type = this.checked ? "text" : "password";
+const passwordInput =
+    document.getElementById("password");
+
+const showPassword =
+    document.getElementById("showPassword");
+
+const forgotPassword =
+    document.getElementById("forgotPassword");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const message =
+    document.getElementById("message");
+
+
+
+function showMessage(text){
+
+    message.textContent = text;
+
+    message.style.display = "block";
+
+}
+
+
+
+function hideMessage(){
+
+    message.style.display = "none";
+
+}
+
+
+
+showPassword.addEventListener("change", function(){
+
+    if(this.checked){
+
+        passwordInput.type = "text";
+
+    }else{
+
+        passwordInput.type = "password";
+
+    }
 
 });
 
 
-document.getElementById("loginForm").addEventListener("submit", async function(event){
 
-event.preventDefault();
+loginForm.addEventListener("submit", async function(event){
 
-const email = document.getElementById("email").value.trim();
+    event.preventDefault();
 
-const password = document.getElementById("password").value;
+    hideMessage();
+
+    loginBtn.disabled = true;
+
+    loginBtn.textContent = "LOGGING IN...";
 
 
-try{
+    const email =
+        emailInput.value.trim();
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+    const password =
+        passwordInput.value;
 
-alert("Login successful!");  
-  
-window.location.href = "account.html";
 
-window.location.href = "index.html";
+    try{
 
-}catch(error){
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-if(error.code === "auth/invalid-credential"){
 
-alert("Email or password is incorrect.");
+        window.location.href = "account.html";
 
-}
-else if(error.code === "auth/invalid-email"){
 
-alert("Please enter a valid email.");
+    }catch(error){
 
-}
-else{
+        console.log(error);
 
-alert("Login failed: " + error.message);
 
-}
+        let errorMessage =
+            "Login failed. Please check your email and password.";
 
-}
+
+        if(error.code === "auth/invalid-credential"){
+
+            errorMessage =
+                "Email or password is incorrect.";
+
+        }
+
+        else if(error.code === "auth/user-not-found"){
+
+            errorMessage =
+                "No account found with this email.";
+
+        }
+
+        else if(error.code === "auth/wrong-password"){
+
+            errorMessage =
+                "Incorrect password.";
+
+        }
+
+        else if(error.code === "auth/invalid-email"){
+
+            errorMessage =
+                "Please enter a valid email.";
+
+        }
+
+
+        showMessage(errorMessage);
+
+
+        loginBtn.disabled = false;
+
+        loginBtn.textContent = "LOGIN";
+
+    }
+
+});
+
+
+
+forgotPassword.addEventListener("click", async function(event){
+
+    event.preventDefault();
+
+
+    const email =
+        emailInput.value.trim();
+
+
+    if(!email){
+
+        showMessage(
+            "Please enter your email address first."
+        );
+
+        emailInput.focus();
+
+        return;
+
+    }
+
+
+    try{
+
+        await sendPasswordResetEmail(
+            auth,
+            email
+        );
+
+
+        showMessage(
+            "Password reset email sent. Please check your inbox."
+        );
+
+
+    }catch(error){
+
+        console.log(error);
+
+
+        showMessage(
+            "Could not send reset email. Please check your email."
+        );
+
+    }
 
 });
 
-
-document.getElementById("forgotPassword").addEventListener("click", async function(event){
-
-event.preventDefault();
-
-const email = document.getElementById("email").value.trim();
-
-if(!email){
-
-alert("Please enter your email address first.");
-
-return;
-
-}
-
-try{
-
-await sendPasswordResetEmail(auth,email);
-
-alert("Password reset email sent. Check your inbox.");
-
-}catch(error){
-
-if(error.code === "auth/user-not-found"){
-
-alert("No account found with this email.");
-
-}
-else{
-
-alert("Could not send reset email.");
-
-}
-
-}
-
-});
 
 </script>
+
 
 </body>
 </html>

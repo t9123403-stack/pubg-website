@@ -413,28 +413,63 @@
 </footer>
 
 
-<script>
 
-function sendMessage(event) {
+<script type="module">
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDjXbNWPISsBzkqmyoMEFJ0KFsnkwyltHE",
+    authDomain: "pubg-zone-9628a.firebaseapp.com",
+    projectId: "pubg-zone-9628a",
+    storageBucket: "pubg-zone-9628a.firebasestorage.app",
+    messagingSenderId: "144771852887",
+    appId: "1:144771852887:web:b59fd929271822088b9112",
+    measurementId: "G-KXMDN1EL1F"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.sendMessage = async function(event) {
 
     event.preventDefault();
 
     const name = document.getElementById("name").value;
-
+    const email = document.getElementById("email").value;
     const reason = document.getElementById("reason").value;
+    const message = document.getElementById("message").value;
 
-    alert(
-        "Thank you " +
-        name +
-        "! Your " +
-        reason +
-        " request has been received."
-    );
+    try {
 
-    document.querySelector("form").reset();
-}
+        await addDoc(collection(db, "contactMessages"), {
+            name: name,
+            email: email,
+            reason: reason,
+            message: message,
+            createdAt: serverTimestamp()
+        });
 
+        alert("Thank you " + name + "! Your message has been sent successfully.");
+
+        document.querySelector("form").reset();
+
+    } catch (error) {
+
+        alert("Message send nahi ho saka. Please try again.");
+
+        console.error(error);
+    }
+};
 </script>
+
 
 </body>
 </html>

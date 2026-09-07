@@ -413,47 +413,53 @@
         }
 
         /* ================= MOBILE ================= */
-
+       
         @media (max-width: 700px) {
 
-            header {
-                padding: 15px 5%;
-            }
+    header {
+        padding: 14px 5%;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-            .logo {
-                font-size: 21px;
-            }
+    .logo {
+        font-size: 24px;
+    }
 
-            nav {
-                gap: 12px;
-            }
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
 
-            nav a {
-                font-size: 12px;
-            }
+    nav a {
+        font-size: 13px;
+        white-space: nowrap;
+    }
 
-            .hero {
-                padding-top: 130px;
-            }
+    .hero {
+        padding-top: 155px;
+    }
 
-            .hero p {
-                font-size: 15px;
-            }
+    .hero p {
+        font-size: 15px;
+    }
 
-            section {
-                padding: 65px 5%;
-            }
+    section {
+        padding: 65px 5%;
+    }
 
-            .section-title h2 {
-                font-size: 30px;
-            }
+    .section-title h2 {
+        font-size: 30px;
+    }
 
-            .update {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-        }
-
+    .update {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
     </style>
 </head>
 
@@ -469,17 +475,13 @@
 
         <nav>
             <a href="#home">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy.html">Privacy</a>
-          <a href="login.html" id="loginLink">Login</a>
-<a href="signup.html" id="signupLink">Sign Up</a>
-<a href="account.html" id="accountLink" style="display:none;">My Account</a>
-<a href="#" id="logoutLink" style="display:none;">Logout</a>
-            <a href="disclaimer.html">Disclaimer</a>
             <a href="#tools">Tools</a>
             <a href="#guides">Guides</a>
             <a href="#updates">Updates</a>
+            <a href="login.html" id="loginLink">Login</a>
+            <a href="signup.html" id="signupLink">Sign Up</a>
+            <a href="account.html" id="accountLink" style="display:none;">My Account</a>
+            <a href="#" id="logoutLink" style="display:none;">Logout</a>
         </nav>
 
     </header>
@@ -758,9 +760,8 @@
         </div>
 
     </footer>
-    
-<script type="module">
 
+<script type="module">
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
@@ -770,78 +771,50 @@ import {
     signOut
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-
 const firebaseConfig = {
-
     apiKey: "AIzaSyDjXbNWPISsBzkqmyoMEFJ0KFsnkwyltHE",
-
     authDomain: "pubg-zone-9628a.firebaseapp.com",
-
     projectId: "pubg-zone-9628a",
-
     storageBucket: "pubg-zone-9628a.firebasestorage.app",
-
     messagingSenderId: "144771852887",
-
     appId: "1:144771852887:web:b59fd929271822088b9112",
-
     measurementId: "G-KXMDN1EL1F"
-
 };
 
-
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 
 const loginLink = document.getElementById("loginLink");
 const signupLink = document.getElementById("signupLink");
 const accountLink = document.getElementById("accountLink");
 const logoutLink = document.getElementById("logoutLink");
 
-
 onAuthStateChanged(auth, (user) => {
-
     if (user) {
-
-        loginLink.style.display = "none";
-        signupLink.style.display = "none";
-
-        accountLink.style.display = "inline";
-        logoutLink.style.display = "inline";
-
+        if (loginLink) loginLink.style.display = "none";
+        if (signupLink) signupLink.style.display = "none";
+        if (accountLink) accountLink.style.display = "inline";
+        if (logoutLink) logoutLink.style.display = "inline";
     } else {
-
-        loginLink.style.display = "inline";
-        signupLink.style.display = "inline";
-
-        accountLink.style.display = "none";
-        logoutLink.style.display = "none";
-
+        if (loginLink) loginLink.style.display = "inline";
+        if (signupLink) signupLink.style.display = "inline";
+        if (accountLink) accountLink.style.display = "none";
+        if (logoutLink) logoutLink.style.display = "none";
     }
-
 });
 
+if (logoutLink) {
+    logoutLink.addEventListener("click", async (event) => {
+        event.preventDefault();
 
-logoutLink.addEventListener("click", async (event) => {
-
-    event.preventDefault();
-
-    try {
-
-        await signOut(auth);
-
-        alert("Logout successful!");
-
-    } catch (error) {
-
-        alert("Logout failed: " + error.message);
-
-    }
-
-});
-
+        try {
+            await signOut(auth);
+            alert("Logout successful!");
+        } catch (error) {
+            alert("Logout failed: " + error.message);
+        }
+    });
+}
 </script>
 
 </body>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://t9123403-stack.github.io/pubg-website/sitemap.xml
